@@ -1,14 +1,6 @@
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import precision_recall_fscore_support
-import numpy as np
-import matplotlib.pyplot as plt
-import os
-
 from sklearn.ensemble import RandomForestClassifier
-
 from sklearn.model_selection import train_test_split
 from CONSTANTS import *
-
 from classFiles.model import RandomForestClassifierModel
 from data.Preprocessing import Preprocessor
 from utils import get_dataset_path
@@ -32,8 +24,14 @@ X_train, X_test, y_train, y_test = train_test_split(features.iloc[:, :-1], featu
 # 9. Why current approach: we can decide if this segment vehicle runs for so and so hours, what will be the level of shock (anticipate)
 
 model = RandomForestClassifierModel(model_name=RandomForestClassifier())
+
+# Train the model and Save the weights
 model.train_model(X_train, y_train, checkpoint_path)
+
+# Test the model on Test data
 clasification_results = model.test_model(X_test, checkpoint_path)
+
+# Calculate the performance metric
 cm, accuracy, precision, recall = model.calculate_model_performance(y_test, clasification_results)
 
 print('Accuracy: {}, Precision: {:.2f}, Recall: {:.2f}'.format(accuracy, precision, recall))
