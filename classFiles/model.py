@@ -1,22 +1,25 @@
-from sklearn import datasets
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import train_test_split
+import pickle
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, plot_confusion_matrix, confusion_matrix
 
-# loading the iris dataset
-iris = datasets.load_iris()
 
-# X -> features, y -> label
-X = iris.data
-y = iris.target
+class RandomForestClassifierModel:
 
-# dividing X, y into train and test data
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+    def __init__(self, model_name):
+        self.model_name = model_name
 
-# training a DescisionTreeClassifier
-from sklearn.tree import DecisionTreeClassifier
+    def train_model(self, X_train, y_train, save_model_path):
+        self.model_name.fit(X_train, y_train)
+        pickle.dump(self.model_name, open(save_model_path, 'wb'))
 
-dtree_model = DecisionTreeClassifier(max_depth=2).fit(X_train, y_train)
-dtree_predictions = dtree_model.predict(X_test)
+    def test_model(self, X_test, filename):
+        loaded_model = pickle.load(open(filename, 'rb'))
+        classifications = loaded_model.predict(X_test)
+        return classifications
 
-# creating a confusion matrix
-cm = confusion_matrix(y_test, dtree_predictions)
+    def calculate_model_performance(self, y_test, prediction_results):
+        cm = confusion_matrix(y_test, prediction_results)
+        accuracy = accuracy_score(y_test, prediction_results)
+        precision_recall_fscore = precision_recall_fscore_support(y_test, prediction_results, average='weighted')
+        precision = precision_recall_fscore[0]
+        recall = precision_recall_fscore[1]
+        return cm, accuracy, precision, recall

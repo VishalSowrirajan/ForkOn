@@ -1,17 +1,26 @@
+import pandas as pd
+from CONSTANTS import *
+
 def preprocess_intensity_metric(intensity_data):
     intensity_feature = []
     for (idx, items) in intensity_data.iteritems():
         items = items.replace("'", "").replace('g', '').replace('/', '').translate(str.maketrans({"'": None})).split()
         conv_list = [float(i) for i in items]
         intensity_feature.append(tuple(conv_list))
-    return pd.DataFrame(intensity_feature)
-
-import pandas as pd
-from CONSTANTS import *
+    return pd.DataFrame(intensity_feature, columns=['Intensity_1', 'Intensity_2'])
 
 
 def convert_to_numeric_features(feature):
     return feature.cat.codes
+
+
+def calc_time_difference(time1, time2):
+    return pd.to_timedelta(time1 - time2)
+
+
+def convert_to_hours(time):
+    return time.dt.total_seconds() / (60 * 60)
+
 
 class Preprocessor:
 
@@ -26,13 +35,24 @@ class Preprocessor:
 
         encoded_segment = convert_to_numeric_features(segment)
         encoded_typ = convert_to_numeric_features(typ)
-        preprocess_intensity_metric(intensity_metric_data)
+        intensity = preprocess_intensity_metric(intensity_metric_data)
 
-        a = dataset.iloc[:, 2]
-        b = dataset.iloc[:, 5]
-        c = dataset.iloc[:, 6]
-        a = pd.to_datetime(a, format='%d.%m.%Y %H:%M:%S')
-        b = pd.to_datetime(b, format='%d.%m.%Y %H:%M:%S')
-        c = pd.to_datetime(c, format='%d.%m.%Y %H:%M:%S')
+        time_of_shock = pd.to_datetime(dataset.iloc[:, 2], format='%d.%m.%Y %H:%M:%S')
+        begin_time = pd.to_datetime(dataset.iloc[:, 5], format='%d.%m.%Y %H:%M:%S')
+        end_time = pd.to_datetime(dataset.iloc[:, 6], format='%d.%m.%Y %H:%M:%S')
 
-    def extract_feature(self):
+        shock_time_interval = calc_time_difference(time_of_shock, begin_time)
+        op_time_interval = calc_time_difference(end_time, begin_time)
+
+        shock_interval_in_hours = convert_to_hours(shock_time_interval)
+        op_interval_in_hours = convert_to_hours(op_time_interval)
+
+        feature = pd.DataFrame([encoded_segment, shock_interval_in_hours, op_interval_in_hours,
+                                encoded_typ, dataset.iloc[:, 3]],
+                    index = ['Segment', 'Shock_interval', 'Operation_interval',
+                             'Type', 'Shock_level']).transpose()
+        concat_feature = pd.concat([intensity, feature], axis=1)
+
+        # Drop NA rows
+        features = concat_feature.dropna()
+        return features
