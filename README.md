@@ -1,17 +1,12 @@
 ***ForkOn Coding Challenge:***
 Author: Vishal Sowrirajan
 
-Dataset Credits/Owner: https://forkon.de/
+Dataset Credits/Ownership: https://forkon.de/
 
-**Feature Importance**: We calculate the importance of different features that mainly contribute to our final classification score.
+Regression Results in tabulation:
 
-![Feature Importance](results/Feature_importance-level.png)
+***Random Forest:***
+Accuracy = 46%, MSE_Error = 0.64
 
-**Confusion Matrix**: Although the dataset is highly imbalanced, we can clearly see the our model is able to classify the Shock intensity with 95% accuracy.
-
-![Confusion Matrix](results/Confusion_matrix.png)
-
-**Pie chart**: 
-
-![Pie chart](https://github.com/VishalSowrirajan/ForkOn/blob/main/results/Segment%20vs%20Shocks.png)
-
+***Linear Regressor:***
+Accuracy = 48.78%, MSE_Error = 0.61
