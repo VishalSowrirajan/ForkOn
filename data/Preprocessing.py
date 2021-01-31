@@ -10,8 +10,6 @@ class Preprocessor:
 
     def parse_dataset(self):
         dataset = pd.read_csv(self.dataset_path, delimiter=DELIMITER, usecols=[4, 5, 13, 17, 11, 18, 14])
-        new = dataset[['segment', 'schocklevel']].copy()
-        a = new.groupby(['segment']).count()
         segment = dataset.iloc[:, 0].astype('category')
         typ = dataset.iloc[:, 1].astype('category')
         intensity_metric_data = dataset.iloc[:, 4]
@@ -30,10 +28,10 @@ class Preprocessor:
         shock_interval_in_hours = convert_to_hours(shock_time_interval)
         op_interval_in_hours = convert_to_hours(op_time_interval)
 
-        feature = pd.DataFrame([encoded_segment, shock_interval_in_hours, op_interval_in_hours,
-                                encoded_typ, dataset.iloc[:, 3]],
-                    index = ['Segment', 'Shock_interval', 'Operation_interval',
-                             'Type', 'Shock_level']).transpose()
+        feature = pd.DataFrame([encoded_segment, op_interval_in_hours,
+                                encoded_typ, dataset.iloc[:, 3], shock_interval_in_hours],
+                    index = ['Segment', 'Operation_interval',
+                             'Type', 'Shock_level', 'Shock_interval']).transpose()
         concat_feature = pd.concat([intensity, feature], axis=1)
 
         # Drop NA rows
