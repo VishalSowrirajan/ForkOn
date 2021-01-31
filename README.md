@@ -13,5 +13,5 @@ Dataset Credits/Owner: https://forkon.de/
 
 **Pie chart**: 
 
-![Pie chart](results\Segment vs Shocks.png)
+![Pie chart](https://github.com/VishalSowrirajan/ForkOn/blob/main/results/Segment%20vs%20Shocks.png)
 
