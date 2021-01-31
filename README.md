@@ -13,5 +13,5 @@ Dataset Credits/Owner: https://forkon.de/
 
 **Pie chart**: 
 
-![Confusion Matrix](results/Segment vs Shocks.png)
+![Pie chart](results/Segment vs Shocks.png)
 
