@@ -24,7 +24,7 @@ The model performance is tested against Accuracy as the metric precisely estimat
 **Setup:**
 The developed code was tested with Python 3.7.
 
-To reproduce the code, run the following command:
+To reproduce the code, clone the repository and run the following command:
 
 - Download the required dependencies:
 ````
