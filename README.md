@@ -1,7 +1,7 @@
+***Dataset Credits/Owner:*** https://forkon.de/
+
 ***ForkOn Coding Challenge:***
 Author: Vishal Sowrirajan
-
-Dataset Credits/Owner: https://forkon.de/
 
 ***Problem Statement:*** 
 Given the Segment, type, Time_interval_of_shock, Time_interval_of_operation and Shock_Intensity, our ML model can classify the intensity level of the shock (1, 2 or 3)
