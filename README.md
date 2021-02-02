@@ -56,3 +56,9 @@ The below pie chart describes segment wise shock counts in the given dataset.
 |-----|-----|
 | `Random Forest Classifier`| 95% |
 | `Decision Tree Classifier`| 93% |
+
+**Usage of the provided feature:**
+Using this ML mode, our clients can analyse the RISK for different segments and types.
+
+**Future Scope:**
+Deploy the ML model in cloud and provide a neat front-end design for our clients to provide the user-defined values as input and test the shock_intensity.
