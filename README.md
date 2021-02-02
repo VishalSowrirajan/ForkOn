@@ -13,6 +13,21 @@ Given the Segment, type, Time_interval_of_operation, Shock_level and Shock_Inten
 - Conversion of time stamp into hours elapsed
 - Encoding categorical values to Numerical value
 
+**Setup:**
+The developed code was tested with Python 3.7.
+
+To reproduce the code, run the following command:
+
+- Download the required dependencies:
+````
+pip install -r requirement.txt
+````
+
+- To run the code:
+````
+python main.py
+````
+
 **Model Checkpoints:**
 The weights of the model after training is stored in Checkpoints folder that can be used in future for further prediction. In short, it is done to avoid training of the model each time.
 
