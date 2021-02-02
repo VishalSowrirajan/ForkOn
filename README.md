@@ -7,13 +7,14 @@ Author: Vishal Sowrirajan
 Given the Segment, type, Time_interval_of_shock, Time_interval_of_operation and Shock_Intensity, our ML model can classify the intensity level of the shock (1, 2 or 3)
 
 ***Preprocessing:***
+Pandas library was used for the below preprocessing functions:
 - Data Parsing
-- Null value handling using Pandas
+- Null value handling
 - Timestamp conversion
 - Encoding categorical values to Numerical value
 
 ***Model Selection:***
-We use accuracy as our baseline and compare 2 models namely 'Decision Tree' and 'Random Forest'
+The accuracy metric is set as baseline and 2 models are compared namely 'Decision Tree' and 'Random Forest'
 
 ***Model Evaluation:***
 The model performance is tested against Accuracy as the metric precisely estimates our model's performance for the given dataset.
