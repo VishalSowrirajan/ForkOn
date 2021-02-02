@@ -33,3 +33,9 @@ python main.py
 
 ![Pie chart](https://github.com/VishalSowrirajan/ForkOn/blob/main/results/Segment%20vs%20Shocks.png)
 
+Model Evaluation:
+
+| Model | Accuracy  |
+|-----|-----|
+| `Random Forest Classifier`| 95% |
+| `Decision Tree Classifier`| 93% |
