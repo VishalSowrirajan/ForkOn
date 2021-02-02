@@ -10,8 +10,6 @@ class Preprocessor:
 
     def parse_dataset(self):
         dataset = pd.read_csv(self.dataset_path, delimiter=DELIMITER, usecols=[4, 5, 13, 17, 11, 18, 14])
-        new = dataset[['segment', 'schocklevel']].copy()
-        a = new.groupby(['segment']).count()
         segment = dataset.iloc[:, 0].astype('category')
         typ = dataset.iloc[:, 1].astype('category')
         intensity_metric_data = dataset.iloc[:, 4]
