@@ -25,4 +25,4 @@ clasification_results = model.test_model(X_test, checkpoint_path)
 # Calculate the performance metric
 cm, accuracy, precision, recall = model.calculate_model_performance(y_test, clasification_results)
 
-print('Accuracy: {}, Precision: {:.2f}, Recall: {:.2f}'.format(accuracy, precision, recall))
+print('Accuracy of the model is: {}'.format(accuracy))
