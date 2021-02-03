@@ -14,7 +14,7 @@ features = data_parser.parse_dataset()
 X_train, X_test, y_train, y_test = train_test_split(features.iloc[:, :-1], features.iloc[:, -1], test_size=0.33)
 
 # Model selection - we choose RANDOM FOREST as our classifier
-model = RandomForestClassifierModel(model_name=RandomForestClassifier())
+model = RandomForestClassifierModel(model_name=RandomForestClassifier(n_estimators=20))
 
 # Train the model and Save the weights
 model.train_model(X_train, y_train, checkpoint_path)
