@@ -1,9 +1,5 @@
-**Dataset Credits/Owner:** https://forkon.de/
-
-**ForkOn Coding Challenge:**
+**ML based Shock level Classification:**
 Author: Vishal Sowrirajan
-
-**Dataset Name:** 5_schocks_gestapelt_land
 
 **Problem Statement:** 
 Given the Segment, type, Time_interval_of_shock, Time_interval_of_operation and Shock_Intensity, our ML model can classify the intensity level of the shock (1, 2 or 3)
@@ -57,7 +53,7 @@ The below pie chart describes segment wise shock counts in the given dataset.
 | Model | Accuracy  |
 |-----|-----|
 | `Random Forest Classifier`| 95% |
-| `Decision Tree Classifier`| 93% |
+| `Decision Tree Classifier`| 91% |
 
 **Usage of the provided feature:**
 Using this ML model, our clients can analyse the RISK for different segments and types.
