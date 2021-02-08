@@ -1,7 +1,5 @@
-**ForkOn Coding Challenge:**
+**ML Based Shock Time Prediction in Forklift using Linear Regression:**
 Author: Vishal Sowrirajan
-
-Dataset Credits/Ownership: https://forkon.de/
 
 **Problem Formulation:** 
 Given the Segment, type, Time_interval_of_operation, Shock_level and Shock_Intensity, the ML model tries to predict the time of shock from the begin time.
